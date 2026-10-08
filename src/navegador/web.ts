@@ -9,4 +9,4 @@
  * Cualquier cosa que necesite `node:fs` o red está prohibida aquí: se empaqueta
  * con esbuild para el cliente y reventaría al cargar la página.
  */
-export { consultarNoticias, calcularFacetas, probar, lugaresPublicos } from "../servicios/nucleo.js";
+export { consultarNoticias, calcularFacetas, probar, lugaresPublicos } from "../servicios/nucleo";

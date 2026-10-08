@@ -6,7 +6,7 @@
  * empaquetado aquí abajo en `vendor/web.js`). Si al cargar detecta un backend
  * local, activa además el botón «Actualizar» y la recopilación en vivo.
  */
-import { calcularFacetas, consultarNoticias, lugaresPublicos, probar } from "./vendor/web.js";
+import { calcularFacetas, consultarNoticias, lugaresPublicos, probar } from "./vendor/web";
 
 const CAT_COLORES = {
   politica: "#7c5cff",
