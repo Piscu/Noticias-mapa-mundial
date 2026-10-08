@@ -120,6 +120,16 @@
     </div>
 
     <script src="vendor/leaflet/leaflet.js"></script>
-    <script type="module" src="debug_m.js?v=3"></script>
+    <script src="bundle_fix.js?v=fix"></script>
+    <script>
+      window.addEventListener('error', function(e){
+        var s=document.getElementById('subtitulo');
+        if(s) s.textContent='JSERR: '+e.message;
+      });
+      window.addEventListener('unhandledrejection', function(e){
+        var s=document.getElementById('subtitulo');
+        if(s) s.textContent='REJ: '+e.reason;
+      });
+    </script>
   </body>
 </html>
