@@ -27,6 +27,9 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Recopilar noticias
+        run: npm run recopilar
+
       - name: Generar instantánea estática
         run: npm run estatico
 
