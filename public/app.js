@@ -741,7 +741,7 @@ async function refrescarEstado() {
   el.subtitulo.textContent =
     `${TODAS.length.toLocaleString("es")} noticias` +
     (estado.inferidas === "no" ? " · sólo topónimos" : estado.inferidas === "solo" ? " · sólo deducidas" : " · todas las temáticas");
-}
+
 
 // Registrar el movimiento del mapa en la URL para compartir
 mapa.on("moveend zoomend", () => {
