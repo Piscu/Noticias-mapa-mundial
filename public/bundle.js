@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  // public/vendor/web.mjs
+  // public/vendor/web.js
   var M = [{ id: "politica", nombre: "Pol\xEDtica", color: "#7c5cff", emoji: "\u{1F3DB}\uFE0F", terminos: { elecciones: 4, election: 3, voto: 2, votan: 2, votos: 2, electoral: 3, campa\u00F1a: 2, candidato: 3, candidata: 3, candidatos: 3, partido: 2, coalici\u00F3n: 2, coalicion: 2, congreso: 3, diputado: 3, diputada: 3, diputados: 3, parlamento: 3, parlamentario: 3, senado: 3, legislatura: 3, ley: 2, reforma: 3, gobierno: 3, "gobierno de": 4, legislaci\u00F3n: 3, legislacion: 3, "proyecto de ley": 4, normativa: 2, decreto: 2, "decreto-ley": 4, presidente: 3, presidenta: 3, presidencia: 3, ministro: 3, ministra: 3, ministros: 3, "ministra de": 4, "primer ministro": 4, ministraancell: 4, canciller: 3, oposici\u00F3n: 3, oposicion: 3, mayor\u00EDa: 2, mayoria: 2, alcalde: 3, alcaldesa: 3, ayuntamiento: 3, refer\u00E9ndum: 3, referendun: 3, amnist\u00EDa: 3, amnistia: 3, destituci\u00F3n: 3, destitucion: 3, renuncia: 2, dimision: 3, investidura: 3, debate: 1, votaci\u00F3n: 3, votacion: 3, premier: 3, "gobierno britanico": 5, "white house": 4, "casa blanca": 4, "congreso de los diputados": 5, capitolio: 4 } }, { id: "economia", nombre: "Econom\xEDa", color: "#00c48c", emoji: "\u{1F4C8}", terminos: { inflaci\u00F3n: 5, inflacion: 5, inflation: 4, ipc: 3, pib: 4, econom\u00EDa: 4, economia: 4, economico: 3, econ\u00F3mico: 3, recesion: 4, recesi\u00F3n: 4, deficit: 3, deuda: 3, presupuesto: 3, impuesto: 3, impuestos: 3, fiscal: 3, "banco central": 5, bce: 4, fed: 4, "reserva federal": 5, "tipos de inter\xE9s": 4, "tasa de inter\xE9s": 4, "tipos de interes": 4, mercado: 2, mercados: 2, bolsa: 3, "bolsa de valores": 4, \u00EDndice: 1, ibex: 4, "dow jones": 4, nasdaq: 4, petr\u00F3leo: 4, petroleo: 4, oil: 3, brent: 4, wti: 4, gasolina: 3, carburante: 3, electricidad: 3, caf\u00E9: 2, cafe: 2, puerto: 1, p\u00E9rdidas: 3, perdidas: 3, ganancias: 3, beneficios: 2, p\u00E9rdida: 3, perdida: 3, bono: 3, bonos: 3, "deuda p\xFAblica": 4, consumo: 2, euribor: 4, divisa: 3, divisas: 3, moneda: 2, euro: 2, dolar: 2, d\u00F3lar: 2, devaluaci\u00F3n: 4, devaluacion: 4, empleo: 3, paro: 4, desempleo: 4, salario: 3, salarios: 3, pension: 2, pensiones: 2, pymes: 3, empresa: 2, empresas: 2, startup: 3, banco: 2, bancos: 2, banca: 3, cr\u00E9dito: 3, credito: 3, hipoteca: 3, alquiler: 2, vivienda: 2, inversi\u00F3n: 2, inversion: 2, inversores: 2, tarifa: 2, tarifas: 2, comercial: 1, exportaciones: 3, importaciones: 3, turismo: 3, turista: 3, turistas: 3, viajes: 2 } }, { id: "conflicto", nombre: "Conflictos", color: "#ff4d4d", emoji: "\u2694\uFE0F", terminos: { guerra: 5, "guerra de": 6, conflicto: 4, "conflicto armado": 6, ataque: 4, ataques: 4, atropello: 4, bombardeo: 5, bombardeos: 5, misil: 4, misiles: 4, cohete: 3, munici\u00F3n: 3, municion: 3, explosi\u00F3n: 4, explosion: 4, ej\u00E9rcito: 4, ejercito: 4, militar: 3, militares: 3, soldado: 3, soldados: 3, ofensiva: 4, contraofensiva: 4, invasion: 5, invasi\u00F3n: 5, ocupaci\u00F3n: 4, ocupacion: 4, frontera: 3, ceasefire: 5, "alto el fuego": 5, tregua: 4, "negociaciones de paz": 5, genocidio: 5, "crisis de refugiados": 5, refugiados: 4, desplazados: 4, hambruna: 4, rebeli\u00F3n: 4, rebelion: 4, insurrecci\u00F3n: 5, "golpe de estado": 6, terrorismo: 5, atentado: 5, atentados: 5, secuestro: 4, coup: 3, tensi\u00F3n: 2, tension: 2, escalada: 3, violencia: 3, manifestantes: 3, protestas: 3, protesta: 3, "oposici\xF3n armada": 5, "coup d'etat": 5 } }, { id: "deportes", nombre: "Deportes", color: "#ffa500", emoji: "\u26BD", terminos: { f\u00FAtbol: 5, futbol: 5, football: 4, liga: 2, "la liga": 4, "real madrid": 4, bar\u00E7a: 4, barcelona: 2, atletico: 3, "atl\xE9tico de madrid": 4, juventus: 4, bayern: 4, manchester: 3, champions: 4, "champions league": 5, "liga mx": 5, mundial: 3, copa: 2, torneo: 3, partido: 3, goles: 4, gol: 3, entrenador: 3, entrenadora: 3, jugador: 2, jugadores: 2, transferencia: 3, fichaje: 4, lesi\u00F3n: 3, lesion: 3, lesionado: 3, recuperaci\u00F3n: 1, basketball: 4, b\u00E1squetbol: 4, tenis: 4, "grand slam": 4, atletismo: 4, olimpiadas: 5, ol\u00EDmpicas: 5, "juegos Ol\xEDmpicos": 6, "mundial de": 3, "olympic games": 4, ciclismo: 4, ciclista: 4, "formula 1": 4, "f\xF3rmula 1": 4, "grand prix": 3, motor: 2, boxeo: 4, p\u00E1del: 3, beisbol: 3, b\u00E9isbol: 3, rugby: 4, golf: 3, gimnasia: 4, nataci\u00F3n: 4, remo: 3, deportista: 3, deporte: 2, deportes: 2, estadio: 3, "estadio azteca": 4, "mundial de f\xFAtbol": 5 } }, { id: "ciencia", nombre: "Ciencia", color: "#00b8ff", emoji: "\u{1F52C}", terminos: { ciencia: 4, cient\u00EDfico: 3, cientifico: 3, cient\u00EDficos: 3, investigaci\u00F3n: 3, investigacion: 3, investigadores: 3, estudio: 2, estudios: 2, hallazgo: 3, hallazgos: 3, descubrimiento: 4, descubren: 3, nasa: 4, espacio: 3, astronom\u00EDa: 4, astronomia: 4, astr\u00F3nomo: 3, satelite: 3, sat\u00E9lite: 3, "cohete espacial": 3, marte: 4, luna: 3, planeta: 3, universo: 3, galaxia: 4, telescopio: 4, f\u00EDsica: 4, qu\u00EDmica: 4, quimica: 4, biolog\u00EDa: 4, biologia: 4, gen\u00E9tica: 4, genetica: 4, genoma: 4, dna: 3, rna: 2, "inteligencia artificial": 4, algoritmo: 2, algoritmos: 2, "investigadores de": 3, "premio nobel": 5, nobel: 4, "fusi\xF3n nuclear": 4, "fusion nuclear": 4, eclipse: 4, meteorito: 4, "c dinosaurio": 1, dinosaurio: 4, f\u00F3sil: 4, fosil: 4, arqueolog\u00EDa: 4, arqueologia: 4, arque\u00F3logo: 4, arqueologo: 4, hallan: 2, demuestran: 2, teor\u00EDa: 2, teoria: 2, cerebro: 3, neuronas: 3, consciente: 2, "investigaci\xF3n cient\xEDfica": 5, c\u00E9lula: 2, celula: 2 } }, { id: "salud", nombre: "Salud", color: "#2ecc71", emoji: "\u{1F3E5}", terminos: { salud: 4, sanitario: 3, sanitarios: 3, m\u00E9dico: 4, medico: 4, m\u00E9dica: 4, medica: 4, m\u00E9dicos: 4, medicos: 4, hospital: 4, hospitales: 4, paciente: 3, pacientes: 3, enfermedad: 4, enfermedades: 4, virus: 3, bacterias: 3, vacuna: 3, vacunas: 3, vacunaci\u00F3n: 4, inmunizaci\u00F3n: 4, pandemia: 5, epidemia: 5, brotes: 3, contagio: 4, oms: 4, "organizaci\xF3n mundial de la salud": 6, who: 2, c\u00E1ncer: 4, cancer: 4, oncolog\u00EDa: 4, diabetes: 4, obesidad: 3, card\u00EDaco: 4, cardiaco: 4, infarto: 4, alzheimer: 4, demencia: 4, depresi\u00F3n: 3, depresion: 3, "salud mental": 5, bienestar: 2, nutrici\u00F3n: 3, nutricion: 3, diet: 2, cirug\u00EDa: 4, cirugia: 4, trasplante: 4, medicamento: 3, medicamentos: 3, tratamiento: 2, sida: 3, hiv: 3, tuberculosis: 4, malaria: 4, dengue: 4, covid: 4, sarampi\u00F3n: 4, sarampion: 4, embarazo: 3, mortalidad: 3, muerte: 1, fallece: 2 } }, { id: "clima", nombre: "Clima", color: "#22c1c3", emoji: "\u{1F30D}", terminos: { clima: 4, clim\u00E1tico: 3, climatico: 3, clim\u00E1tica: 3, climatica: 3, "medio ambiente": 4, ecol\u00F3gico: 3, ecologico: 3, ecol\u00F3gica: 3, ecologica: 3, contaminaci\u00F3n: 4, contaminacion: 4, emisiones: 3, emision: 3, carbono: 3, co2: 3, "efecto invernadero": 5, "calentamiento global": 6, temperatura: 3, temperaturas: 3, "ola de calor": 5, "ola calor": 5, sequ\u00EDa: 4, sequia: 4, sequ\u00EDas: 4, sequias: 4, inundaci\u00F3n: 4, inundacion: 4, inundaciones: 4, hurac\u00E1n: 5, huracan: 5, huracanes: 5, cicl\u00F3n: 5, ciclon: 5, tif\u00F3n: 5, tifon: 5, tornado: 4, tormenta: 3, "tormenta tropical": 5, "depresi\xF3n tropical": 4, "depresion tropical": 4, alerta: 1, evacuados: 3, evacuaci\u00F3n: 3, evacuacion: 3, desastre: 3, desastres: 3, cat\u00E1strofe: 4, catastrofe: 4, erupci\u00F3n: 4, erupcion: 4, volc\u00E1n: 4, volcan: 4, terremoto: 4, sismo: 3, incendio: 3, incendios: 3, bombero: 3, bomberos: 3, "protecci\xF3n civil": 4, reciclaje: 3, renovable: 3, renovables: 3, solar: 2, e\u00F3lica: 3, eolica: 3, sostenible: 3, sostenibilidad: 4, "acuerdo de paris": 5, cop28: 5, cop29: 5, cop30: 5, "cambio clim\xE1tico": 6, "cambio climatico": 6 } }, { id: "tecnologia", nombre: "Tecnolog\xEDa", color: "#4dd0e1", emoji: "\u{1F4BB}", terminos: { tecnolog\u00EDa: 4, tecnologia: 4, tecnol\u00F3gico: 3, tecnologico: 3, tech: 3, aplicaci\u00F3n: 2, aplicacion: 2, app: 2, apps: 2, software: 3, hardware: 3, internet: 3, "redes sociales": 4, "red social": 4, facebook: 3, instagram: 3, twitter: 2, "x.com": 2, tiktok: 3, youtube: 3, whatsapp: 3, telegram: 2, "inteligencia artificial": 4, "machine learning": 4, "aprendizaje autom\xE1tico": 4, chatgpt: 4, openai: 4, google: 2, microsoft: 2, apple: 2, amazon: 2, meta: 2, chip: 3, chips: 3, semiconductor: 4, semiconductores: 4, intel: 2, nvidia: 2, smartphone: 3, m\u00F3vil: 2, movil: 2, tel\u00E9fono: 2, telefono: 2, smart: 2, autonomous: 1, aut\u00F3nomo: 3, autonomo: 3, robot: 3, robots: 3, ciberseguridad: 4, ciberataque: 5, hackeo: 4, hack: 3, hacker: 3, ciberdelito: 4, ransomware: 4, "filtraci\xF3n de datos": 4, privacidad: 3, "datos personales": 1, "regulaci\xF3n digital": 4, startup: 3, emprendimiento: 2, "app store": 3, nube: 2, "internet de las cosas": 5, blockchain: 3, criptomoneda: 3, bitcoin: 3, cripto: 2, inteligencia: 2, robotica: 4, nasa: 4, spacex: 4, tesla: 2, samsung: 1, sony: 1, huawei: 1 } }, { id: "cultura", nombre: "Cultura", color: "#ff6ec7", emoji: "\u{1F3AD}", terminos: { cultura: 4, cultural: 3, arte: 3, artista: 3, artistas: 3, museo: 3, museos: 3, exposici\u00F3n: 3, exposicion: 3, pintura: 3, cuadro: 2, escultura: 3, mural: 3, teatro: 3, "obra de teatro": 4, cine: 3, pel\u00EDcula: 3, pelicula: 3, director: 2, directora: 2, actor: 2, actriz: 2, actores: 2, actrices: 2, serie: 2, series: 2, televisi\u00F3n: 3, television: 3, netflix: 3, hbo: 3, streaming: 3, disney: 2, premio: 2, premios: 2, "gana el": 1, nominado: 2, oscar: 4, goya: 4, grammy: 4, grammys: 4, festival: 3, festivales: 3, libro: 2, libros: 2, novela: 3, escritor: 3, escritora: 3, poeta: 3, poes\u00EDa: 3, musica: 3, m\u00FAsica: 3, concierto: 3, cantante: 3, banda: 2, \u00E1lbum: 3, album: 3, cancion: 2, canci\u00F3n: 2, pop: 1, rock: 2, reguet\u00F3n: 3, flamenco: 4, tango: 3, folclore: 4, gastronom\u00EDa: 3, gastronomia: 3, restaurante: 2, cocina: 1, receta: 2, artefactos: 1, arquitectura: 2, monumento: 2, patrimonio: 2, "patrimonio de la humanidad": 4, efem\u00E9rides: 2, aniversario: 2, conmemoraci\u00F3n: 2 } }, { id: "sociedad", nombre: "Sociedad", color: "#9b8cff", emoji: "\u{1F465}", terminos: { sociedad: 3, ciudadanos: 2, ciudadana: 2, habitantes: 2, vecinos: 2, vecino: 2, comunidad: 2, poblaci\u00F3n: 2, migra: 3, migraci\u00F3n: 3, migracion: 3, migrante: 3, migrantes: 3, inmigraci\u00F3n: 3, inmigracion: 3, asilo: 4, tr\u00E1fico: 3, accidente: 3, accidentes: 3, choque: 3, incendio: 3, robo: 3, hurto: 3, delito: 3, delitos: 3, polic\u00EDa: 3, policia: 3, detenido: 3, detencion: 3, detenci\u00F3n: 3, detenciones: 3, juez: 3, jueza: 3, tribunal: 3, fiscal: 2, c\u00E1rcel: 4, carcel: 4, prisi\u00F3n: 4, prision: 4, condena: 3, condenado: 3, condenada: 3, juicio: 3, investiga: 2, "violencia de g\xE9nero": 5, machismo: 3, feminicidio: 4, hambre: 3, pobreza: 3, pobres: 2, desigualdad: 3, educacion: 3, educaci\u00F3n: 3, colegio: 2, escuela: 2, universidad: 2, estudiante: 2, estudiantes: 2, profesores: 2, bombas: 2, explosi\u00F3n: 3, desaparecido: 3, desaparecida: 3, rescate: 3, salvamento: 3, b\u00FAsqueda: 3, busqueda: 3, mujeres: 2, hombres: 2, ni\u00F1os: 2, ninos: 2, adolescentes: 2, "personas mayores": 3, discapacidad: 3, lgbt: 3, lgbtq: 3 } }, { id: "deportes_olimpicos", nombre: "Ol\xEDmpicos", color: "#ffd700", emoji: "\u{1F3C5}", terminos: { ol\u00EDmpico: 4, olimpico: 4, ol\u00EDmpica: 4, olimpica: 4, ol\u00EDmpicos: 4, olimpicos: 4, "juegos ol\xEDmpicos": 6, "medalla de oro": 5, "medalla de plata": 5, "medalla de bronce": 5, medallas: 4, olimpiadas: 5, atleta: 3, atletas: 3, r\u00E9cord: 3, record: 3, "r\xE9cord olympico": 5, paral\u00EDmpico: 5, paralimpico: 5, "comit\xE9 ol\xEDmpico": 5, "committee olimpico": 1 } }];
   var L2 = (() => {
     let o = (r) => r.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim(), i = /* @__PURE__ */ new Map();
@@ -569,7 +569,7 @@
     el.btnRefrescar.textContent = "Actualizando\u2026";
     el.carga.classList.remove("oculto");
     try {
-      await pedir("/api/recopilar", { method: "POST" });
+      await pedir("api/recopilar", { method: "POST" });
       const r = await fetch("datos/noticias.json", { cache: "no-store" });
       if (r.ok) {
         const d = await r.json();
@@ -644,14 +644,13 @@
   $2("#btn-tira-mas").onclick = () => el.tira.scrollBy({ left: 620, behavior: "smooth" });
   $2("#btn-tira-menos").onclick = () => el.tira.scrollBy({ left: -620, behavior: "smooth" });
   async function refrescarEstado() {
-    if (!hayServidor) return;
     try {
-      const e2 = await pedir("/api/estado");
+      const e2 = await pedir(hayServidor ? "api/estado" : "datos/estado.json");
       estadoServidor = e2;
       const cuando = e2.ultimaExitosa ? new Date(e2.ultimaExitosa).toLocaleString("es") : "nunca";
       el.estadoFuentes.textContent = `${e2.total} noticias \xB7 ${e2.feedsOk}/${e2.feedsTotales} feeds OK \xB7 ${e2.ubicacionesInferidas ?? 0} de pa\xEDs deducido \xB7 \xFAltima actualizaci\xF3n: ${cuando}${e2.enCurso ? " \xB7 recopilando\u2026" : ""}`;
     } catch {
-      el.estadoFuentes.textContent = "Servidor local no disponible";
+      el.estadoFuentes.textContent = hayServidor ? "Servidor local no disponible" : "";
     }
   }
   (async function inicio() {
@@ -667,50 +666,24 @@
     } catch {
       TODAS = [];
     }
-    try {
-      const s = await fetch("api/salud", { cache: "no-store" });
-      hayServidor = s.ok;
-    } catch {
-      hayServidor = false;
+    const esLocal = ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
+    if (esLocal) {
+      try {
+        const s = await fetch("api/salud", { cache: "no-store" });
+        hayServidor = s.ok;
+      } catch {
+        hayServidor = false;
+      }
     }
-    if (hayServidor) {
-      el.btnRefrescar.style.display = "";
-      el.btnRefrescar.onclick = async () => {
-        el.btnRefrescar.disabled = true;
-        el.btnRefrescar.textContent = "Actualizando\u2026";
-        el.carga.classList.remove("oculto");
-        try {
-          await pedir("api/recopilar", { method: "POST" });
-          const r2 = await fetch("datos/noticias.json", { cache: "no-store" });
-          if (r2.ok) {
-            const d = await r2.json();
-            TODAS = Array.isArray(d.noticias) ? d.noticias : [];
-          }
-          await cargarFacetas();
-          await cargarNoticias();
-        } catch (e2) {
-          alert("No se pudo actualizar: " + e2.message);
-        } finally {
-          el.carga.classList.add("oculto");
-          el.btnRefrescar.disabled = false;
-          el.btnRefrescar.textContent = "Actualizar";
-        }
-      };
-    } else {
-      el.btnRefrescar.style.display = "none";
-      el.btnRefrescar.onclick = null;
-    }
+    el.btnRefrescar.style.display = hayServidor ? "" : "none";
     await refrescarEstado();
     if (!TODAS.length && hayServidor) {
       const datos = await pedir("api/noticias?limite=1500");
       TODAS = datos.noticias;
     }
     cargando = false;
-    el.subtitulo.textContent = "Datos cargados";
-    pintarFiltros();
-    pintarMapa();
-    pintarTira();
-    el.subtitulo.textContent = `${TODAS.length.toLocaleString("es")} noticias` + (estado.inferidas === "no" ? " \xB7 s\xF3lo top\xF3nimos" : estado.inferidas === "solo" ? " \xB7 s\xF3lo deducidas" : " \xB7 todas las tem\xE1ticas");
+    await cargarFacetas();
+    await cargarNoticias();
   })();
   mapa.on("moveend zoomend", () => {
     const c2 = mapa.getCenter();

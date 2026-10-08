@@ -6,7 +6,7 @@
  * empaquetado aquí abajo en `vendor/web.js`). Si al cargar detecta un backend
  * local, activa además el botón «Actualizar» y la recopilación en vivo.
  */
-import { calcularFacetas, consultarNoticias, lugaresPublicos, probar } from "./vendor/web.mjs";
+import { calcularFacetas, consultarNoticias, lugaresPublicos, probar } from "./vendor/web.js";
 
 const CAT_COLORES = {
   politica: "#7c5cff",
@@ -562,7 +562,7 @@ el.btnRefrescar.onclick = async () => {
   el.btnRefrescar.textContent = "Actualizando…";
   el.carga.classList.remove("oculto");
   try {
-    await pedir("/api/recopilar", { method: "POST" });
+    await pedir("api/recopilar", { method: "POST" });
     // Actualiza la instantánea estática y vuelve a cargar
     const r = await fetch("datos/noticias.json", { cache: "no-store" });
     if (r.ok) {
@@ -667,9 +667,9 @@ $("#btn-tira-menos").onclick = () => el.tira.scrollBy({ left: -620, behavior: "s
 /* ------------------------------------------------------------------ */
 
 async function refrescarEstado() {
-  if (!hayServidor) return;
+  // Con Express, el estado en vivo; sin él, la instantánea de datos/estado.json
   try {
-    const e = await pedir("/api/estado");
+    const e = await pedir(hayServidor ? "api/estado" : "datos/estado.json");
     estadoServidor = e;
     const cuando = e.ultimaExitosa ? new Date(e.ultimaExitosa).toLocaleString("es") : "nunca";
     el.estadoFuentes.textContent =
@@ -677,13 +677,9 @@ async function refrescarEstado() {
       `${e.ubicacionesInferidas ?? 0} de país deducido · ` +
       `última actualización: ${cuando}${e.enCurso ? " · recopilando…" : ""}`;
   } catch {
-    el.estadoFuentes.textContent = "Servidor local no disponible";
+    el.estadoFuentes.textContent = hayServidor ? "Servidor local no disponible" : "";
   }
 }
-
-/* ------------------------------------------------------------------ */
-/* Arranque                                                            */
-/* ------------------------------------------------------------------ */
 
 /* ------------------------------------------------------------------ */
 /* Arranque                                                            */
@@ -702,40 +698,20 @@ async function refrescarEstado() {
   } catch {
     TODAS = [];
   }
-  // Detecta si hay un servidor Express detrás
-  try {
-    const s = await fetch("api/salud", { cache: "no-store" });
-    hayServidor = s.ok;
-  } catch {
-    hayServidor = false;
+  // Detecta si hay un servidor Express detrás (sólo en local; en la web
+  // publicada no se pide, así la consola no acumula 404)
+  const esLocal = ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
+  if (esLocal) {
+    try {
+      const s = await fetch("api/salud", { cache: "no-store" });
+      hayServidor = s.ok;
+    } catch {
+      hayServidor = false;
+    }
   }
-  if (hayServidor) {
-    el.btnRefrescar.style.display = "";
-    el.btnRefrescar.onclick = async () => {
-      el.btnRefrescar.disabled = true;
-      el.btnRefrescar.textContent = "Actualizando…";
-      el.carga.classList.remove("oculto");
-      try {
-        await pedir("api/recopilar", { method: "POST" });
-        const r2 = await fetch("datos/noticias.json", { cache: "no-store" });
-        if (r2.ok) {
-          const d = await r2.json();
-          TODAS = Array.isArray(d.noticias) ? d.noticias : [];
-        }
-        await cargarFacetas();
-        await cargarNoticias();
-      } catch (e) {
-        alert("No se pudo actualizar: " + e.message);
-      } finally {
-        el.carga.classList.add("oculto");
-        el.btnRefrescar.disabled = false;
-        el.btnRefrescar.textContent = "Actualizar";
-      }
-    };
-  } else {
-    el.btnRefrescar.style.display = "none";
-    el.btnRefrescar.onclick = null;
-  }
+  // El botón «Actualizar» sólo tiene sentido con Express detrás: en la web
+  // publicada se oculta y la recopilación la hace el cron de GitHub Actions.
+  el.btnRefrescar.style.display = hayServidor ? "" : "none";
   // Intenta cargar estado del servidor si lo hay
   await refrescarEstado();
   if (!TODAS.length && hayServidor) {
@@ -743,13 +719,9 @@ async function refrescarEstado() {
     TODAS = datos.noticias;
   }
   cargando = false;
-  el.subtitulo.textContent = "Datos cargados";
-  pintarFiltros();
-  pintarMapa();
-  pintarTira();
-  el.subtitulo.textContent =
-    `${TODAS.length.toLocaleString("es")} noticias` +
-    (estado.inferidas === "no" ? " · sólo topónimos" : estado.inferidas === "solo" ? " · sólo deducidas" : " · todas las temáticas");
+  // Facetas y consulta inicial: pintarFiltros() exige estado.facetas calculado
+  await cargarFacetas();
+  await cargarNoticias();
 })();
 
 // Registrar el movimiento del mapa en la URL para compartir
