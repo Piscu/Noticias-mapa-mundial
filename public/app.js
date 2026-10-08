@@ -685,6 +685,11 @@ async function refrescarEstado() {
 /* Arranque                                                            */
 /* ------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------ */
+/* Arranque                                                            */
+/* ------------------------------------------------------------------ */
+
+(async function inicio() {
   cargando = true;
   try {
     const r = await fetch("datos/noticias.json", { cache: "no-cache" });
@@ -712,6 +717,11 @@ async function refrescarEstado() {
       el.carga.classList.remove("oculto");
       try {
         await pedir("api/recopilar", { method: "POST" });
+        const r2 = await fetch("datos/noticias.json", { cache: "no-store" });
+        if (r2.ok) {
+          const d = await r2.json();
+          TODAS = Array.isArray(d.noticias) ? d.noticias : [];
+        }
         await cargarFacetas();
         await cargarNoticias();
       } catch (e) {
@@ -729,7 +739,6 @@ async function refrescarEstado() {
   // Intenta cargar estado del servidor si lo hay
   await refrescarEstado();
   if (!TODAS.length && hayServidor) {
-    // No hay instantánea: carga desde API
     const datos = await pedir("api/noticias?limite=1500");
     TODAS = datos.noticias;
   }
@@ -741,7 +750,7 @@ async function refrescarEstado() {
   el.subtitulo.textContent =
     `${TODAS.length.toLocaleString("es")} noticias` +
     (estado.inferidas === "no" ? " · sólo topónimos" : estado.inferidas === "solo" ? " · sólo deducidas" : " · todas las temáticas");
-
+})();
 
 // Registrar el movimiento del mapa en la URL para compartir
 mapa.on("moveend zoomend", () => {
