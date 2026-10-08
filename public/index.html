@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noticias del Mundo · Mapa</title>
+
+    <!-- Leaflet 1.9.4 servido desde este mismo servidor: sin CDN.
+         Las rutas son relativas para que la página funcione igual en
+         http://localhost:3000/ que en https://usuario.github.io/Noticias/ -->
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="estilos.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%97%A3%3C/text%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header class="barra">
+        <div class="marca">
+          <span class="logo">🌍</span>
+          <div>
+            <h1>Noticias del Mundo</h1>
+            <p id="subtitulo">Cargando…</p>
+          </div>
+        </div>
+
+        <div class="buscador">
+          <input id="q" type="search" placeholder="Buscar en titulares y resúmenes…" autocomplete="off" />
+        </div>
+
+        <div class="acciones">
+          <select id="horas">
+            <option value="0">Todo el histórico</option>
+            <option value="1">Última hora</option>
+            <option value="6">Últimas 6 h</option>
+            <option value="12">Últimas 12 h</option>
+            <option value="24" selected>Últimas 24 h</option>
+            <option value="72">Últimos 3 días</option>
+            <option value="168">Última semana</option>
+          </select>
+          <button id="btn-tema" title="Alternar tema claro/oscuro">🌙</button>
+          <button id="btn-probar" title="Probar la clasificación con un texto">🧪</button>
+          <button id="btn-refrescar" class="primario" title="Volver a recopilar los titulares">Actualizar</button>
+        </div>
+      </header>
+
+      <div class="cuerpo">
+        <aside class="lateral">
+          <section>
+            <h2>Temáticas</h2>
+            <div id="filtro-cats" class="chips"></div>
+          </section>
+
+          <section>
+            <h2>Continente / País <span id="cont-lugares" class="muestreo"></span></h2>
+            <div class="scroll" id="filtro-lugares"></div>
+          </section>
+
+          <section>
+            <h2>Portales <span id="cont-fuentes" class="muestreo"></span></h2>
+            <div class="scroll" id="filtro-fuentes"></div>
+          </section>
+
+          <section>
+            <h2>Origen del marcador</h2>
+            <div id="filtro-inferidas" class="chips"></div>
+          </section>
+
+          <section>
+            <h2>Capa del mapa</h2>
+            <div id="filtro-capas" class="chips"></div>
+          </section>
+
+          <section class="pie-lateral">
+            <button id="btn-limpiar" class="ancho">Limpiar filtros</button>
+            <p class="nota" id="estado-fuentes"></p>
+          </section>
+        </aside>
+
+        <main id="mapa" aria-label="Mapa mundial de noticias"></main>
+      </div>
+
+      <section class="tira" aria-label="Últimas noticias">
+        <header class="tira-cab">
+          <h2 id="tira-titulo">Últimas noticias</h2>
+          <div class="tira-nav">
+            <span id="tira-info" class="muestreo"></span>
+            <button id="btn-tira-menos">&lt;</button>
+            <button id="btn-tira-mas">&gt;</button>
+          </div>
+        </header>
+        <div id="tira" class="tira-tarjetas"></div>
+      </section>
+
+      <dialog id="dlg-probar">
+        <form method="dialog">
+          <h3>Probar la clasificación</h3>
+          <label>
+            Titular
+            <input id="p-titulo" type="text" placeholder="Escribe un titular de ejemplo…" />
+          </label>
+          <label>
+            Resumen (opcional)
+            <textarea id="p-desc" rows="3" placeholder="Texto del artículo…"></textarea>
+          </label>
+          <div class="acciones-probar">
+            <button value="cancelar" class="neutro">Cerrar</button>
+            <button id="p-ejecutar" value="ok" class="primario">Analizar</button>
+          </div>
+          <output id="p-resultado"></output>
+        </form>
+      </dialog>
+
+      <div id="cargando" class="cargando oculto">
+        <div class="spinner"></div>
+        <span>Recopilando noticias de los portales…</span>
+      </div>
+    </div>
+
+    <script src="vendor/leaflet/leaflet.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+# Dependencias
+node_modules/
+
+# Compilación TypeScript
+dist/
+
+# Datos generados (noticias recopiladas)
+datos/
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+
+# Entorno
+.env
+.env.local
