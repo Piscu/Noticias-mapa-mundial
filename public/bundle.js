@@ -304,9 +304,10 @@
   }
   function imgSegura(url) {
     if (!url) return null;
+    const limpia = String(url).replace(/&amp;/g, "&").trim();
     try {
-      const u = new URL(url);
-      return u.protocol === "https:" ? url : null;
+      const u = new URL(limpia);
+      return u.protocol === "https:" ? limpia : null;
     } catch {
       return null;
     }
@@ -507,44 +508,59 @@
       ([id, n]) => `<span class="etiqueta-cat" style="background:${CAT_COLORES[id] ?? "#4c8dff"}">${CAT_EMOJI[id] ?? ""} ${esc(catNombre(id))} ${n}</span>`
     ).join(" ");
     const lista = noticias.slice(0, 12).map(
-      (n) => `<li style="margin:5px 0"><a href="${esc(n.enlace)}" target="_blank" rel="noopener">${esc(n.titulo)}</a>
-      <div style="font-size:11px;color:#667">${esc(n.fuenteNombre)} \xB7 ${haceCuanto(n.fecha ?? n.fechaRecopilacion)}${n.ubicacionInferida ? " \xB7 \u{1F4CD} deducida" : ""}</div></li>`
+      (n) => `<li><a href="${esc(n.enlace)}" target="_blank" rel="noopener">${esc(n.titulo)}</a>
+      <div class="fuente-mini">${esc(n.fuenteNombre)} \xB7 ${haceCuanto(n.fecha ?? n.fechaRecopilacion)}${n.ubicacionInferida ? " \xB7 \u{1F4CD} deducida" : ""}</div></li>`
     ).join("");
     const inferidas = noticias.filter((n) => n.ubicacionInferida).length;
     return `
     ${img ? `<img class="img" src="${esc(img)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
-    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <div class="meta">
       <span class="etiqueta-cat" style="background:${color}">${CAT_EMOJI[cat] ?? ""} ${esc(catNombre(cat))}</span>
-      <span style="font-size:11px;color:#667">${esc(primero.lugarNombre)} \xB7 ${noticias.length} noticia${noticias.length === 1 ? "" : "s"}</span>
+      <span class="ubica">${esc(primero.lugarNombre)} \xB7 ${noticias.length} noticia${noticias.length === 1 ? "" : "s"}</span>
     </div>
     ${inferidas ? `<p class="ubica" title="En ${inferidas} de estas noticias no aparece ning\xFAn top\xF3nimo en el texto, as\xED que el marcador se ha situado en el pa\xEDs del portal.">\u{1F4CD} ${inferidas} situadas por el pa\xEDs del portal, sin top\xF3nimo en el texto</p>` : ""}
-    <div style="margin-top:8px">${catTags}</div>
-    <ul style="margin:10px 0 0;padding-left:18px;max-height:260px;overflow:auto">${lista}</ul>
+    <div class="meta">${catTags}</div>
+    <ul>${lista}</ul>
     ${noticias.length > 12 ? `<p class="ubica">+${noticias.length - 12} m\xE1s en esta zona</p>` : ""}
     <div class="ubica">Coordenadas: ${primero.lat.toFixed(2)}, ${primero.lon.toFixed(2)}</div>
     <div style="margin-top:8px">
-      <button onclick="window.__marcar('${esc(lugarId)}')" style="font-size:11px;padding:4px 8px">Ver en la tira de noticias</button>
+      <button onclick="window.__marcar('${esc(lugarId)}')">Ver en la tira de noticias</button>
     </div>`;
   }
   function pintarTira() {
     el.tira.innerHTML = "";
     const lista = estado.noticias.slice(0, 200);
+    if (!lista.length) {
+      el.tira.innerHTML = `
+      <div class="tira-vacia">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
+        </svg>
+        <span>No hay noticias con estos filtros. Ampl\xEDa el rango temporal o limpia los filtros.</span>
+      </div>`;
+      el.tiraInfo.textContent = "";
+      return;
+    }
     for (const n of lista) {
       const color = CAT_COLORES[n.categoria] ?? "#4c8dff";
+      const img = imgSegura(n.imagen);
       const card = document.createElement("article");
       card.className = "tarjeta";
       card.style.setProperty("--cat-color", color);
       card.dataset.lugar = n.lugarId;
       card.innerHTML = `
-      <div class="et">
-        <span class="etiqueta-cat" style="background:${color}">${CAT_EMOJI[n.categoria] ?? ""} ${esc(catNombre(n.categoria))}</span>
-        <span>${n.ubicacionInferida ? "\u{1F4CD} " : ""}${esc(n.lugarNombre)}</span>
-      </div>
-      <h3>${esc(n.titulo)}</h3>
-      <div class="pie">
-        <span>${esc(n.fuenteNombre)}</span>
-        <span>\xB7</span>
-        <span>${haceCuanto(n.fecha ?? n.fechaRecopilacion)}</span>
+      ${img ? `<div class="tarjeta-media"><img src="${esc(img)}" alt="" loading="lazy" onerror="this.closest('.tarjeta-media').remove()"></div>` : ""}
+      <div class="cuerpo-tarjeta">
+        <div class="et">
+          <span class="etiqueta-cat" style="background:${color}">${CAT_EMOJI[n.categoria] ?? ""} ${esc(catNombre(n.categoria))}</span>
+          <span class="lugar">${n.ubicacionInferida ? "\u{1F4CD} " : ""}${esc(n.lugarNombre)}</span>
+        </div>
+        <h3>${esc(n.titulo)}</h3>
+        <div class="pie">
+          <span class="fuente">${esc(n.fuenteNombre)}</span>
+          <span>\xB7</span>
+          <span>${haceCuanto(n.fecha ?? n.fechaRecopilacion)}</span>
+        </div>
       </div>`;
       card.onclick = () => {
         mapa.setView([n.lat, n.lon], Math.max(mapa.getZoom(), 4), { animate: true });
@@ -623,12 +639,10 @@
   el.btnTema.onclick = () => {
     const html = document.documentElement;
     const nuevo = html.dataset.tema === "claro" ? "oscuro" : "claro";
-    html.dataset.tema = nuevo;
-    el.btnTema.textContent = nuevo === "claro" ? "\u2600\uFE0F" : "\u{1F319}";
+    if (nuevo === "claro") html.dataset.tema = "claro";
+    else delete html.dataset.tema;
     localStorage.setItem("tema", nuevo);
   };
-  var temaGuardado = localStorage.getItem("tema");
-  if (temaGuardado === "claro") el.btnTema.click();
   var qTimer;
   el.q.oninput = () => {
     clearTimeout(qTimer);
